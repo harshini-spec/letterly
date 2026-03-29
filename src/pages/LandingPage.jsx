@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -7,6 +8,15 @@ const fadeUp = {
   viewport: { once: true, margin: '-80px' },
   transition: { duration: 0.7, ease: 'easeOut' },
 }
+
+const hearts = [
+  { emoji: '💌', x: -60, y: -90, delay: 2.2, duration: 3, size: 20 },
+  { emoji: '♥', x: 70, y: -110, delay: 2.8, duration: 3.5, size: 16 },
+  { emoji: '💕', x: -40, y: -130, delay: 3.4, duration: 2.8, size: 18 },
+  { emoji: '♥', x: 50, y: -80, delay: 4.0, duration: 3.2, size: 14 },
+  { emoji: '✨', x: -70, y: -100, delay: 3.0, duration: 3, size: 15 },
+  { emoji: '💗', x: 80, y: -120, delay: 2.5, duration: 3.4, size: 17 },
+]
 
 export default function LandingPage() {
   const navigate = useNavigate()
@@ -97,7 +107,7 @@ export default function LandingPage() {
             </div>
           </motion.div>
 
-          {/* Right — Hero Image */}
+          {/* Right — Animated Envelope */}
           <motion.div
             className="flex-1 min-w-0 flex justify-center md:justify-end"
             initial={{ opacity: 0, y: 20 }}
@@ -105,69 +115,157 @@ export default function LandingPage() {
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
             <div
-              className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] rounded-xl overflow-hidden"
+              className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[520px] rounded-2xl overflow-visible relative"
               style={{
-                aspectRatio: '4 / 3',
-                background: '#4a6b60',
-                boxShadow: '0 16px 48px rgba(0,0,0,0.1)',
-                border: '5px solid #fff',
+                aspectRatio: '4 / 3.2',
+                background: 'linear-gradient(145deg, #5a7d6f, #4a6b60)',
+                boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)',
+                border: '6px solid #fff',
               }}
             >
-              {/* Envelope */}
-              <div className="relative w-full h-full flex items-center justify-center" style={{ paddingBottom: '8%', paddingRight: '8%' }}>
-                <div className="relative">
-                  <div
-                    className="w-40 h-28 sm:w-48 sm:h-32 md:w-52 md:h-36 rounded-md relative"
-                    style={{
-                      background: 'linear-gradient(150deg, #f5f0ea, #e8dfcf)',
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.18)',
+              <div className="relative w-full h-full flex items-center justify-center">
+                {/* Floating hearts */}
+                {hearts.map((h, i) => (
+                  <motion.span
+                    key={i}
+                    className="absolute pointer-events-none select-none"
+                    style={{ fontSize: h.size, zIndex: 10 }}
+                    initial={{ opacity: 0, y: 0, x: 0 }}
+                    animate={{
+                      opacity: [0, 0.9, 0.9, 0],
+                      y: [0, h.y * 0.5, h.y],
+                      x: [0, h.x * 0.5, h.x],
+                      scale: [0.5, 1.1, 0.8],
+                    }}
+                    transition={{
+                      duration: h.duration,
+                      delay: h.delay,
+                      repeat: Infinity,
+                      repeatDelay: 2,
+                      ease: 'easeOut',
                     }}
                   >
-                    <div
-                      className="absolute -top-6 sm:-top-8 left-0 right-0 h-[50%]"
+                    {h.emoji}
+                  </motion.span>
+                ))}
+
+                {/* Envelope body */}
+                <div className="relative" style={{ marginTop: '6%' }}>
+                  <div
+                    className="w-48 h-32 sm:w-56 sm:h-36 md:w-64 md:h-44 lg:w-72 lg:h-48 rounded-lg relative"
+                    style={{
+                      background: 'linear-gradient(150deg, #f5f0ea, #e8dfcf)',
+                      boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
+                    }}
+                  >
+                    {/* Envelope flap — opens after delay */}
+                    <motion.div
+                      className="absolute left-0 right-0 h-[55%]"
                       style={{
+                        top: '-1px',
                         clipPath: 'polygon(0 100%, 50% 0%, 100% 100%)',
                         background: 'linear-gradient(180deg, #ede5d8, #e4dacb)',
+                        transformOrigin: 'top center',
+                        zIndex: 2,
+                      }}
+                      initial={{ rotateX: 0 }}
+                      animate={{ rotateX: [0, 0, 180, 180, 0] }}
+                      transition={{
+                        duration: 5,
+                        delay: 1.2,
+                        repeat: Infinity,
+                        repeatDelay: 3,
+                        ease: 'easeInOut',
+                        times: [0, 0.1, 0.3, 0.7, 0.9],
                       }}
                     />
-                    <div
-                      className="absolute -top-3 sm:-top-4 left-2 right-2 h-10 sm:h-12 rounded-t-sm"
-                      style={{ background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}
+
+                    {/* Letter peeking out */}
+                    <motion.div
+                      className="absolute left-3 right-3 sm:left-4 sm:right-4 rounded-t-sm overflow-hidden"
+                      style={{
+                        background: '#fff',
+                        boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
+                        zIndex: 1,
+                        height: '55%',
+                      }}
+                      initial={{ top: '10%' }}
+                      animate={{ top: ['10%', '10%', '-30%', '-30%', '10%'] }}
+                      transition={{
+                        duration: 5,
+                        delay: 1.2,
+                        repeat: Infinity,
+                        repeatDelay: 3,
+                        ease: 'easeInOut',
+                        times: [0, 0.1, 0.35, 0.65, 0.9],
+                      }}
                     >
-                      <div className="p-2 sm:p-3 space-y-1">
-                        <div className="w-12 sm:w-16 h-1 rounded-full" style={{ background: '#e0d8cf' }} />
-                        <div className="w-20 sm:w-24 h-1 rounded-full" style={{ background: '#e0d8cf' }} />
+                      <div className="p-3 sm:p-4 space-y-2">
+                        <div className="w-14 sm:w-20 h-1 sm:h-1.5 rounded-full" style={{ background: '#e0d8cf' }} />
+                        <div className="w-20 sm:w-28 h-1 sm:h-1.5 rounded-full" style={{ background: '#e0d8cf' }} />
+                        <div className="w-16 sm:w-24 h-1 sm:h-1.5 rounded-full" style={{ background: '#e0d8cf' }} />
                       </div>
-                    </div>
+                    </motion.div>
+
+                    {/* Bottom V fold */}
                     <div
                       className="absolute bottom-0 left-0 right-0 h-[50%]"
                       style={{
                         clipPath: 'polygon(0 0, 50% 80%, 100% 0, 100% 100%, 0 100%)',
                         background: 'linear-gradient(to bottom, transparent, #ede5d8)',
-                        borderRadius: '0 0 6px 6px',
+                        borderRadius: '0 0 8px 8px',
+                        zIndex: 3,
                       }}
                     />
+
+                    {/* Wax seal */}
+                    <motion.div
+                      className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center"
+                      style={{
+                        background: 'radial-gradient(circle at 35% 35%, #c45a5a, #8b2e2e)',
+                        boxShadow: '0 3px 10px rgba(139,46,46,0.4)',
+                        zIndex: 4,
+                      }}
+                      animate={{ scale: [1, 1.08, 1] }}
+                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                    >
+                      <span className="text-[10px] sm:text-[12px]" style={{ color: '#f5e0d0' }}>♥</span>
+                    </motion.div>
                   </div>
                 </div>
               </div>
 
               {/* Coffee cup */}
               <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8">
-                <div className="relative">
+                <motion.div
+                  className="relative"
+                  animate={{ y: [0, -3, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                >
                   <div
-                    className="w-12 h-9 sm:w-14 sm:h-10 md:w-16 md:h-12 rounded-b-xl rounded-t-sm"
+                    className="w-14 h-10 sm:w-16 sm:h-12 md:w-18 md:h-14 rounded-b-xl rounded-t-sm"
                     style={{ background: '#fff', boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}
                   >
                     <div
-                      className="absolute top-1 left-1/2 -translate-x-1/2 w-7 sm:w-8 md:w-10 h-4 sm:h-5 md:h-6 rounded-b-lg"
+                      className="absolute top-1 left-1/2 -translate-x-1/2 w-8 sm:w-10 md:w-12 h-5 sm:h-6 md:h-7 rounded-b-lg"
                       style={{ background: '#3a2218' }}
                     />
                   </div>
+                  {/* Steam */}
+                  <motion.div
+                    className="absolute -top-4 left-1/2 -translate-x-1/2 flex gap-1"
+                    animate={{ opacity: [0.3, 0.7, 0.3], y: [0, -4, 0] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <div className="w-0.5 h-3 rounded-full" style={{ background: 'rgba(255,255,255,0.5)' }} />
+                    <div className="w-0.5 h-4 rounded-full mt-1" style={{ background: 'rgba(255,255,255,0.4)' }} />
+                    <div className="w-0.5 h-3 rounded-full" style={{ background: 'rgba(255,255,255,0.5)' }} />
+                  </motion.div>
                   <div
-                    className="w-14 sm:w-16 md:w-20 h-1.5 rounded-full mx-auto"
+                    className="w-16 sm:w-18 md:w-22 h-1.5 rounded-full mx-auto"
                     style={{ background: '#f0ebe5', boxShadow: '0 2px 6px rgba(0,0,0,0.06)' }}
                   />
-                </div>
+                </motion.div>
               </div>
             </div>
           </motion.div>
