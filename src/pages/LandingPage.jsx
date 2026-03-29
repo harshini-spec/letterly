@@ -51,8 +51,8 @@ export default function LandingPage() {
       </nav>
 
       {/* ─── Hero Section ─── */}
-      <section className="w-full h-[calc(100vh-64px)] flex items-center px-8 sm:px-12 md:px-16 lg:px-28">
-        <div className="w-full flex flex-col md:flex-row items-center gap-10 md:gap-12 lg:gap-20">
+      <section className="w-full h-[calc(100vh-64px)] flex items-center px-6 sm:px-10 md:px-12 lg:px-20">
+        <div className="w-full flex flex-col md:flex-row items-center gap-8 md:gap-8 lg:gap-12">
           {/* Left — Text */}
           <motion.div
             className="flex-1 min-w-0 max-w-xl text-center items-center flex flex-col"
@@ -115,9 +115,9 @@ export default function LandingPage() {
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
             <div
-              className="w-full max-w-[360px] sm:max-w-[420px] md:max-w-[460px] lg:max-w-[520px] rounded-2xl overflow-visible relative"
+              className="w-full max-w-[380px] sm:max-w-[440px] md:max-w-[500px] lg:max-w-[560px] rounded-2xl overflow-visible relative"
               style={{
-                aspectRatio: '4 / 3.2',
+                aspectRatio: '4 / 3.4',
                 background: 'linear-gradient(145deg, #5a7d6f, #4a6b60)',
                 boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)',
                 border: '6px solid #fff',
@@ -152,7 +152,7 @@ export default function LandingPage() {
                 {/* Envelope body */}
                 <div className="relative" style={{ marginTop: '6%' }}>
                   <div
-                    className="w-48 h-32 sm:w-56 sm:h-36 md:w-64 md:h-44 lg:w-72 lg:h-48 rounded-lg relative"
+                    className="w-52 h-36 sm:w-60 sm:h-40 md:w-72 md:h-48 lg:w-80 lg:h-56 rounded-lg relative"
                     style={{
                       background: 'linear-gradient(150deg, #f5f0ea, #e8dfcf)',
                       boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
