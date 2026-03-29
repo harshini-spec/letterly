@@ -67,11 +67,11 @@ export default function LandingPage() {
       </nav>
 
       {/* ─── Hero Section ─── */}
-      <section className="w-full h-[calc(100vh-64px)] flex items-center px-8 sm:px-12 md:px-16 lg:px-28 xl:px-36">
+      <section className="w-full h-[calc(100vh-64px)] flex items-center px-8 sm:px-12 md:px-16 lg:px-28">
         <div className="w-full flex flex-col md:flex-row items-center gap-10 md:gap-12 lg:gap-20">
           {/* Left — Text */}
           <motion.div
-            className="flex-1 min-w-0 max-w-xl"
+            className="flex-1 min-w-0 max-w-xl text-center items-center flex flex-col"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -84,7 +84,7 @@ export default function LandingPage() {
             </h1>
 
             <p
-              className="mt-8 md:mt-10 text-[14px] md:text-[16px] leading-[1.8] max-w-[420px]"
+              className="mt-8 md:mt-10 text-[14px] md:text-[16px] leading-[1.8] max-w-[420px] mx-auto"
               style={{ color: '#7a6e66' }}
             >
               Rediscover the art of thoughtful communication with
@@ -92,7 +92,7 @@ export default function LandingPage() {
               as pen and paper.
             </p>
 
-            <div className="flex items-center gap-7 md:gap-8 mt-10 md:mt-14 flex-wrap">
+            <div className="flex items-center justify-center gap-7 md:gap-8 mt-10 md:mt-14 flex-wrap">
               <motion.button
                 onClick={() => navigate('/create')}
                 className="px-8 md:px-10 py-4 md:py-[18px] rounded-full text-[13px] md:text-[14px] font-semibold cursor-pointer border-0 uppercase tracking-[0.08em]"
