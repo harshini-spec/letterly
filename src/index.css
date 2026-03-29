@@ -85,11 +85,18 @@
   box-sizing: border-box;
 }
 
-html {
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
   scrollbar-width: none;
-  overflow-x: hidden;
+  -ms-overflow-style: none;
 }
 
 html::-webkit-scrollbar {
@@ -100,15 +107,11 @@ body {
   font-family: var(--font-ui);
   background: #fdf8f4;
   color: var(--text-primary);
-  min-height: 100vh;
-  overflow-x: hidden;
-  -ms-overflow-style: none;
-  width: 100%;
 }
 
 #root {
   width: 100%;
-  overflow-x: hidden;
+  min-height: 100vh;
 }
 
 ::selection {

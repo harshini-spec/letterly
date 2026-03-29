@@ -12,10 +12,10 @@ export default function LandingPage() {
   const navigate = useNavigate()
 
   return (
-    <div className="w-full" style={{ background: '#fdf8f4' }}>
+    <div className="w-full min-h-screen" style={{ background: '#fdf8f4' }}>
       {/* ─── Navbar ─── */}
       <nav
-        className="sticky top-0 z-50 flex items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20 py-4 md:py-5"
+        className="sticky top-0 z-50 w-full flex items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20 py-4 md:py-5"
         style={{
           background: 'rgba(253,248,244,0.9)',
           backdropFilter: 'blur(14px)',
@@ -67,11 +67,11 @@ export default function LandingPage() {
       </nav>
 
       {/* ─── Hero Section ─── */}
-      <section className="h-[calc(100vh-64px)] flex items-center px-5 sm:px-8 md:px-12 lg:px-20">
-        <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-10 md:gap-12 lg:gap-16">
+      <section className="w-full h-[calc(100vh-64px)] flex items-center px-5 sm:px-8 md:px-12 lg:px-20">
+        <div className="w-full flex flex-col md:flex-row items-center gap-10 md:gap-12 lg:gap-20">
           {/* Left — Text */}
           <motion.div
-            className="flex-1 min-w-0"
+            className="flex-1 min-w-0 max-w-xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
@@ -122,13 +122,13 @@ export default function LandingPage() {
 
           {/* Right — Hero Image */}
           <motion.div
-            className="flex-1 min-w-0 flex justify-center md:justify-end w-full"
+            className="flex-1 min-w-0 flex justify-center md:justify-end"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
             <div
-              className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] rounded-xl overflow-hidden"
+              className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] rounded-xl overflow-hidden"
               style={{
                 aspectRatio: '4 / 3',
                 background: '#4a6b60',
@@ -137,7 +137,7 @@ export default function LandingPage() {
               }}
             >
               {/* Envelope */}
-              <div className="absolute inset-0 flex items-center justify-center" style={{ paddingBottom: '8%', paddingRight: '8%' }}>
+              <div className="relative w-full h-full flex items-center justify-center" style={{ paddingBottom: '8%', paddingRight: '8%' }}>
                 <div className="relative">
                   <div
                     className="w-40 h-28 sm:w-48 sm:h-32 md:w-52 md:h-36 rounded-md relative"
@@ -146,7 +146,6 @@ export default function LandingPage() {
                       boxShadow: '0 10px 30px rgba(0,0,0,0.18)',
                     }}
                   >
-                    {/* Open flap */}
                     <div
                       className="absolute -top-6 sm:-top-8 left-0 right-0 h-[50%]"
                       style={{
@@ -154,7 +153,6 @@ export default function LandingPage() {
                         background: 'linear-gradient(180deg, #ede5d8, #e4dacb)',
                       }}
                     />
-                    {/* Letter peeking out */}
                     <div
                       className="absolute -top-3 sm:-top-4 left-2 right-2 h-10 sm:h-12 rounded-t-sm"
                       style={{ background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}
@@ -164,7 +162,6 @@ export default function LandingPage() {
                         <div className="w-20 sm:w-24 h-1 rounded-full" style={{ background: '#e0d8cf' }} />
                       </div>
                     </div>
-                    {/* Bottom fold V */}
                     <div
                       className="absolute bottom-0 left-0 right-0 h-[50%]"
                       style={{
@@ -201,16 +198,16 @@ export default function LandingPage() {
       </section>
 
       {/* ─── Divider ─── */}
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20">
+      <div className="w-full px-5 sm:px-8 md:px-12 lg:px-20">
         <div style={{ height: 1, background: '#e8ddd5' }} />
       </div>
 
       {/* ─── Features Section ─── */}
       <section
         id="features"
-        className="min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 lg:px-20 py-20 md:py-28"
+        className="w-full min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 lg:px-20 py-20 md:py-28"
       >
-        <div className="max-w-5xl mx-auto w-full">
+        <div className="w-full max-w-5xl mx-auto">
           <motion.div className="text-center mb-16 md:mb-24" {...fadeUp}>
             <p
               className="text-[11px] font-semibold tracking-[0.2em] uppercase mb-4"
@@ -276,12 +273,12 @@ export default function LandingPage() {
       </section>
 
       {/* ─── Divider ─── */}
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 md:px-12 lg:px-20">
+      <div className="w-full px-5 sm:px-8 md:px-12 lg:px-20">
         <div style={{ height: 1, background: '#e8ddd5' }} />
       </div>
 
       {/* ─── Final CTA Section ─── */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 lg:px-20 py-20 md:py-28">
+      <section className="w-full min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 lg:px-20 py-20 md:py-28">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div {...fadeUp}>
             <span
@@ -328,7 +325,7 @@ export default function LandingPage() {
 
       {/* ─── Footer ─── */}
       <footer
-        className="px-5 sm:px-8 md:px-12 lg:px-20 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4"
+        className="w-full px-5 sm:px-8 md:px-12 lg:px-20 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4"
         style={{ borderTop: '1px solid #e8ddd5' }}
       >
         <span
