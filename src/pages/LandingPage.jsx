@@ -52,7 +52,7 @@ export default function LandingPage() {
 
       {/* ─── Hero Section ─── */}
       <section className="w-full h-[calc(100vh-64px)] flex items-center px-6 sm:px-10 md:px-12 lg:px-20">
-        <div className="w-full flex flex-col md:flex-row items-center gap-8 md:gap-8 lg:gap-12">
+        <div className="w-full flex flex-col md:flex-row items-center gap-6 md:gap-6 lg:gap-8">
           {/* Left — Text */}
           <motion.div
             className="flex-1 min-w-0 max-w-xl text-center items-center flex flex-col"
@@ -115,9 +115,9 @@ export default function LandingPage() {
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
             <div
-              className="w-full max-w-[380px] sm:max-w-[440px] md:max-w-[500px] lg:max-w-[560px] rounded-2xl overflow-visible relative"
+              className="w-full max-w-[420px] sm:max-w-[480px] md:max-w-[540px] lg:max-w-[600px] rounded-2xl overflow-visible relative"
               style={{
-                aspectRatio: '4 / 3.4',
+                aspectRatio: '16 / 10',
                 background: 'linear-gradient(145deg, #5a7d6f, #4a6b60)',
                 boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)',
                 border: '6px solid #fff',
@@ -167,10 +167,12 @@ export default function LandingPage() {
                         clipPath: 'polygon(0 0, 50% 100%, 100% 0)',
                         background: 'linear-gradient(180deg, #e4dacb, #ddd2c2)',
                         transformOrigin: 'top center',
-                        zIndex: 2,
                       }}
-                      initial={{ rotateX: 0 }}
-                      animate={{ rotateX: [0, 0, 180, 180, 0] }}
+                      initial={{ rotateX: 0, zIndex: 4 }}
+                      animate={{
+                        rotateX: [0, 0, 180, 180, 0],
+                        zIndex: [4, 4, 1, 1, 4],
+                      }}
                       transition={{
                         duration: 5,
                         delay: 1.2,
@@ -187,11 +189,13 @@ export default function LandingPage() {
                       style={{
                         background: '#fff',
                         boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
-                        zIndex: 1,
                         height: '55%',
                       }}
-                      initial={{ top: '10%' }}
-                      animate={{ top: ['10%', '10%', '-30%', '-30%', '10%'] }}
+                      initial={{ top: '10%', zIndex: 2 }}
+                      animate={{
+                        top: ['10%', '10%', '-30%', '-30%', '10%'],
+                        zIndex: [2, 2, 5, 5, 2],
+                      }}
                       transition={{
                         duration: 5,
                         delay: 1.2,
