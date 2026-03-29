@@ -160,11 +160,12 @@ export default function LandingPage() {
                   >
                     {/* Envelope flap — opens after delay */}
                     <motion.div
-                      className="absolute left-0 right-0 h-[55%]"
+                      className="absolute left-0 right-0"
                       style={{
-                        top: '-1px',
-                        clipPath: 'polygon(0 100%, 50% 0%, 100% 100%)',
-                        background: 'linear-gradient(180deg, #ede5d8, #e4dacb)',
+                        top: 0,
+                        height: '55%',
+                        clipPath: 'polygon(0 0, 50% 100%, 100% 0)',
+                        background: 'linear-gradient(180deg, #e4dacb, #ddd2c2)',
                         transformOrigin: 'top center',
                         zIndex: 2,
                       }}
