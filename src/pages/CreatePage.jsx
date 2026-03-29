@@ -156,25 +156,22 @@ export default function CreatePage() {
 
       {/* Content area */}
       <div className="px-4 py-6 max-w-3xl mx-auto">
-        <AnimatePresence mode="wait">
-          {activeTab === 'write' && (
-            <WriteTab key="write" letter={letter} update={update} />
-          )}
-          {activeTab === 'style' && (
-            <StyleTab key="style" letter={letter} update={update} />
-          )}
-          {activeTab === 'decorate' && (
-            <DecorateTab
-              key="decorate"
-              letter={letter}
-              addDecoration={addDecoration}
-              removeDecoration={removeDecoration}
-            />
-          )}
-          {activeTab === 'gifts' && (
-            <GiftsTab key="gifts" letter={letter} updateGifts={updateGifts} />
-          )}
-        </AnimatePresence>
+        {activeTab === 'write' && (
+          <WriteTab letter={letter} update={update} />
+        )}
+        {activeTab === 'style' && (
+          <StyleTab letter={letter} update={update} />
+        )}
+        {activeTab === 'decorate' && (
+          <DecorateTab
+            letter={letter}
+            addDecoration={addDecoration}
+            removeDecoration={removeDecoration}
+          />
+        )}
+        {activeTab === 'gifts' && (
+          <GiftsTab letter={letter} updateGifts={updateGifts} />
+        )}
       </div>
 
       {/* Share Modal */}
