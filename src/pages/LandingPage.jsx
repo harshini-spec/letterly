@@ -29,41 +29,15 @@ export default function LandingPage() {
           Letterly
         </span>
 
-        <div className="hidden md:flex items-center gap-8 lg:gap-10">
-          {['Features', 'Pricing', 'About'].map((link, i) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-[13px] font-medium tracking-[0.06em] uppercase no-underline"
-              style={{
-                color: '#6b5e56',
-                textDecoration: i === 0 ? 'underline' : 'none',
-                textUnderlineOffset: '4px',
-                textDecorationColor: '#a8434b',
-              }}
-            >
-              {link}
-            </a>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-3 md:gap-5">
-          <span
-            className="hidden md:inline text-[13px] font-medium cursor-pointer"
-            style={{ color: '#5a504a' }}
-          >
-            Login
-          </span>
-          <motion.button
-            onClick={() => navigate('/create')}
-            className="px-4 md:px-6 py-2 md:py-2.5 rounded-full text-[12px] md:text-[13px] font-semibold cursor-pointer border-0 uppercase tracking-[0.04em]"
-            style={{ background: '#a8434b', color: '#fff' }}
-            whileHover={{ scale: 1.04 }}
-            whileTap={{ scale: 0.97 }}
-          >
-            Get Started
-          </motion.button>
-        </div>
+        <motion.button
+          onClick={() => navigate('/create')}
+          className="px-5 md:px-7 py-2.5 md:py-3 rounded-full text-[12px] md:text-[13px] font-semibold cursor-pointer border-0 uppercase tracking-[0.04em]"
+          style={{ background: '#a8434b', color: '#fff' }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.97 }}
+        >
+          Get Started
+        </motion.button>
       </nav>
 
       {/* ─── Hero Section ─── */}
@@ -92,30 +66,33 @@ export default function LandingPage() {
               as pen and paper.
             </p>
 
-            <div className="flex items-center justify-center gap-7 md:gap-8 mt-10 md:mt-14 flex-wrap">
+            <div className="flex items-center justify-center gap-8 md:gap-10 mt-10 md:mt-14 flex-wrap">
               <motion.button
                 onClick={() => navigate('/create')}
-                className="px-8 md:px-10 py-4 md:py-[18px] rounded-full text-[13px] md:text-[14px] font-semibold cursor-pointer border-0 uppercase tracking-[0.08em]"
+                className="px-10 sm:px-14 md:px-16 py-5 md:py-6 rounded-full text-[15px] sm:text-[17px] md:text-[19px] cursor-pointer border-0 tracking-[0.02em]"
                 style={{
                   background: '#a8434b',
-                  color: '#fff',
-                  boxShadow: '0 4px 20px rgba(168,67,75,0.3)',
+                  color: '#f5eeea',
+                  boxShadow: '0 6px 28px rgba(168,67,75,0.3)',
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontStyle: 'italic',
+                  fontWeight: 500,
                 }}
-                whileHover={{ scale: 1.04, boxShadow: '0 6px 28px rgba(168,67,75,0.4)' }}
+                whileHover={{ scale: 1.03, boxShadow: '0 8px 36px rgba(168,67,75,0.4)' }}
                 whileTap={{ scale: 0.97 }}
               >
                 Send your first letter
               </motion.button>
 
               <motion.button
-                className="text-[13px] md:text-[14px] font-medium cursor-pointer bg-transparent border-0 flex items-center gap-2.5 uppercase tracking-[0.06em]"
-                style={{ color: '#5a504a' }}
+                className="text-[14px] md:text-[16px] cursor-pointer bg-transparent border-0 flex items-center gap-3 tracking-[0.02em]"
+                style={{ color: '#5a504a', fontFamily: "'Cormorant Garamond', serif", fontWeight: 500 }}
                 whileHover={{ x: 4 }}
               >
-                <span style={{ textDecoration: 'underline', textUnderlineOffset: '4px' }}>
+                <span style={{ textDecoration: 'underline', textUnderlineOffset: '5px' }}>
                   View the gallery
                 </span>
-                <span>&rarr;</span>
+                <span className="text-lg">&rarr;</span>
               </motion.button>
             </div>
           </motion.div>
