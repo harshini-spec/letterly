@@ -67,7 +67,7 @@ export default function LandingPage() {
       </nav>
 
       {/* ─── Hero Section ─── */}
-      <section className="w-full h-[calc(100vh-64px)] flex items-center px-5 sm:px-8 md:px-12 lg:px-20">
+      <section className="w-full h-[calc(100vh-64px)] flex items-center px-8 sm:px-12 md:px-16 lg:px-28 xl:px-36">
         <div className="w-full flex flex-col md:flex-row items-center gap-10 md:gap-12 lg:gap-20">
           {/* Left — Text */}
           <motion.div
@@ -84,7 +84,7 @@ export default function LandingPage() {
             </h1>
 
             <p
-              className="mt-6 md:mt-8 text-[14px] md:text-[15px] leading-[1.7] max-w-[400px]"
+              className="mt-8 md:mt-10 text-[14px] md:text-[16px] leading-[1.8] max-w-[420px]"
               style={{ color: '#7a6e66' }}
             >
               Rediscover the art of thoughtful communication with
@@ -92,10 +92,10 @@ export default function LandingPage() {
               as pen and paper.
             </p>
 
-            <div className="flex items-center gap-5 mt-8 md:mt-12 flex-wrap">
+            <div className="flex items-center gap-7 md:gap-8 mt-10 md:mt-14 flex-wrap">
               <motion.button
                 onClick={() => navigate('/create')}
-                className="px-6 md:px-8 py-3.5 md:py-4 rounded-full text-[12px] md:text-[13px] font-semibold cursor-pointer border-0 uppercase tracking-[0.08em]"
+                className="px-8 md:px-10 py-4 md:py-[18px] rounded-full text-[13px] md:text-[14px] font-semibold cursor-pointer border-0 uppercase tracking-[0.08em]"
                 style={{
                   background: '#a8434b',
                   color: '#fff',
@@ -108,11 +108,11 @@ export default function LandingPage() {
               </motion.button>
 
               <motion.button
-                className="text-[12px] md:text-[13px] font-medium cursor-pointer bg-transparent border-0 flex items-center gap-2 uppercase tracking-[0.06em]"
+                className="text-[13px] md:text-[14px] font-medium cursor-pointer bg-transparent border-0 flex items-center gap-2.5 uppercase tracking-[0.06em]"
                 style={{ color: '#5a504a' }}
                 whileHover={{ x: 4 }}
               >
-                <span style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+                <span style={{ textDecoration: 'underline', textUnderlineOffset: '4px' }}>
                   View the gallery
                 </span>
                 <span>&rarr;</span>
