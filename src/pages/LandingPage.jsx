@@ -67,7 +67,7 @@ export default function LandingPage() {
       </nav>
 
       {/* ─── Hero Section ─── */}
-      <section className="min-h-[calc(100vh-64px)] flex items-center px-5 sm:px-8 md:px-12 lg:px-20 py-12 md:py-0">
+      <section className="h-[calc(100vh-64px)] flex items-center px-5 sm:px-8 md:px-12 lg:px-20">
         <div className="max-w-6xl mx-auto w-full flex flex-col md:flex-row items-center gap-10 md:gap-12 lg:gap-16">
           {/* Left — Text */}
           <motion.div
@@ -128,13 +128,13 @@ export default function LandingPage() {
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
             <div
-              className="relative w-full max-w-[360px] md:max-w-[400px] lg:max-w-[440px] rounded-lg overflow-hidden"
+              className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] rounded-lg overflow-hidden"
               style={{
-                aspectRatio: '4 / 3.2',
+                aspectRatio: '4 / 3',
                 background: '#4a6b60',
                 boxShadow: '0 16px 48px rgba(0,0,0,0.1)',
                 border: '5px solid #fff',
-                transform: 'rotate(1.5deg)',
+                transform: 'rotate(1deg)',
               }}
             >
               {/* Envelope */}
