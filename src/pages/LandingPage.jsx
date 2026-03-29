@@ -12,7 +12,7 @@ export default function LandingPage() {
   const navigate = useNavigate()
 
   return (
-    <div className="overflow-x-hidden" style={{ background: '#fdf8f4' }}>
+    <div className="w-full" style={{ background: '#fdf8f4' }}>
       {/* ─── Navbar ─── */}
       <nav
         className="sticky top-0 z-50 flex items-center justify-between px-5 sm:px-8 md:px-12 lg:px-20 py-4 md:py-5"
@@ -128,13 +128,12 @@ export default function LandingPage() {
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
             <div
-              className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] rounded-lg overflow-hidden"
+              className="relative w-full max-w-[320px] sm:max-w-[360px] md:max-w-[380px] lg:max-w-[420px] rounded-xl overflow-hidden"
               style={{
                 aspectRatio: '4 / 3',
                 background: '#4a6b60',
                 boxShadow: '0 16px 48px rgba(0,0,0,0.1)',
                 border: '5px solid #fff',
-                transform: 'rotate(1deg)',
               }}
             >
               {/* Envelope */}

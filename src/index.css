@@ -89,6 +89,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scrollbar-width: none;
+  overflow-x: hidden;
 }
 
 html::-webkit-scrollbar {
@@ -97,11 +98,17 @@ html::-webkit-scrollbar {
 
 body {
   font-family: var(--font-ui);
-  background-color: var(--bg-primary);
+  background: #fdf8f4;
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
   -ms-overflow-style: none;
+  width: 100%;
+}
+
+#root {
+  width: 100%;
+  overflow-x: hidden;
 }
 
 ::selection {
