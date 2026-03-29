@@ -267,7 +267,7 @@ export default function LandingPage() {
             style={{ color: '#b5a99f' }}
             {...fadeUp}
           >
-            Start your journey in 60 a single thought. No cards, and no stamps required.
+            Start your journey with a single thought. No cards and no stamps required.
           </motion.p>
         </div>
       </section>
