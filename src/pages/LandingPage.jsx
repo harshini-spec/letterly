@@ -9,12 +9,14 @@ const fadeUp = {
 }
 
 const hearts = [
-  { emoji: '💌', x: -60, y: -90, delay: 2.2, duration: 3, size: 20 },
-  { emoji: '♥', x: 70, y: -110, delay: 2.8, duration: 3.5, size: 16 },
-  { emoji: '💕', x: -40, y: -130, delay: 3.4, duration: 2.8, size: 18 },
-  { emoji: '♥', x: 50, y: -80, delay: 4.0, duration: 3.2, size: 14 },
-  { emoji: '✨', x: -70, y: -100, delay: 3.0, duration: 3, size: 15 },
-  { emoji: '💗', x: 80, y: -120, delay: 2.5, duration: 3.4, size: 17 },
+  { emoji: '♥', x: -55, y: -80, delay: 3.0, duration: 2.5, size: 22, color: '#e85d75' },
+  { emoji: '♥', x: 60, y: -100, delay: 3.2, duration: 2.8, size: 16, color: '#f4a0b0' },
+  { emoji: '♥', x: -30, y: -120, delay: 3.5, duration: 2.6, size: 26, color: '#d94060' },
+  { emoji: '♥', x: 40, y: -70, delay: 3.1, duration: 2.4, size: 13, color: '#f4a0b0' },
+  { emoji: '♥', x: -65, y: -60, delay: 3.8, duration: 2.3, size: 14, color: '#e85d75' },
+  { emoji: '♥', x: 70, y: -110, delay: 3.4, duration: 2.7, size: 18, color: '#f4a0b0' },
+  { emoji: '♥', x: 10, y: -130, delay: 3.6, duration: 2.9, size: 28, color: '#d94060' },
+  { emoji: '♥', x: -45, y: -105, delay: 3.3, duration: 2.5, size: 12, color: '#f4a0b0' },
 ]
 
 export default function LandingPage() {
@@ -113,121 +115,128 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
-            <div className="relative" style={{ width: '100%', maxWidth: 420 }}>
-              {/* Floating hearts — positioned around the envelope */}
+            <div className="relative" style={{ width: '100%', maxWidth: 440 }}>
+              {/* Floating hearts — burst upward when letter opens */}
               {hearts.map((h, i) => (
-                <motion.span
+                <motion.div
                   key={i}
                   className="absolute pointer-events-none select-none"
                   style={{
-                    fontSize: h.size,
                     zIndex: 20,
                     left: '50%',
-                    top: '30%',
+                    top: '25%',
+                    color: h.color,
+                    fontSize: h.size,
                   }}
-                  initial={{ opacity: 0, y: 0, x: 0 }}
+                  initial={{ opacity: 0, y: 0, x: 0, scale: 0 }}
                   animate={{
-                    opacity: [0, 0.85, 0.85, 0],
-                    y: [0, h.y * 0.6, h.y * 1.2],
-                    x: [0, h.x * 0.6, h.x],
-                    scale: [0.4, 1, 0.7],
+                    opacity: [0, 1, 1, 0],
+                    y: [0, h.y * 0.4, h.y],
+                    x: [0, h.x * 0.5, h.x],
+                    scale: [0, 1.2, 0.8],
+                    rotate: [0, h.x > 0 ? 15 : -15, 0],
                   }}
                   transition={{
                     duration: h.duration,
                     delay: h.delay,
                     repeat: Infinity,
-                    repeatDelay: 2.5,
+                    repeatDelay: 4,
                     ease: 'easeOut',
                   }}
                 >
                   {h.emoji}
-                </motion.span>
+                </motion.div>
               ))}
 
-              {/* SVG Envelope with animation */}
+              {/* SVG Envelope */}
               <svg
-                viewBox="0 0 400 300"
+                viewBox="0 0 400 320"
                 className="w-full h-auto"
-                style={{ overflow: 'visible' }}
+                style={{ overflow: 'visible', filter: 'drop-shadow(0 12px 32px rgba(0,0,0,0.10))' }}
               >
-                {/* Back flap — triangle behind envelope, flips open */}
+                {/* Back flap — hinges from bottom of triangle */}
                 <motion.g
-                  style={{ transformOrigin: '200px 120px' }}
+                  style={{ transformOrigin: '200px 130px' }}
                   initial={{ rotateX: 0 }}
                   animate={{ rotateX: [0, 0, 180, 180, 0] }}
                   transition={{
-                    duration: 5,
+                    duration: 5.5,
                     delay: 1.5,
                     repeat: Infinity,
                     repeatDelay: 3,
                     ease: 'easeInOut',
-                    times: [0, 0.08, 0.25, 0.75, 0.92],
+                    times: [0, 0.06, 0.22, 0.78, 0.94],
                   }}
                 >
                   <polygon
-                    points="40,120 200,10 360,120"
-                    fill="#d8cfc0"
-                    stroke="#c8bfb0"
-                    strokeWidth="0.5"
+                    points="45,130 200,20 355,130"
+                    fill="#e8a0a8"
+                  />
+                  <polygon
+                    points="45,130 200,20 355,130"
+                    fill="url(#flapShade)"
                   />
                 </motion.g>
 
                 {/* Letter paper — slides up */}
                 <motion.g
                   initial={{ y: 0 }}
-                  animate={{ y: [0, 0, -100, -100, 0] }}
+                  animate={{ y: [0, 0, -110, -110, 0] }}
                   transition={{
-                    duration: 5,
+                    duration: 5.5,
                     delay: 1.5,
                     repeat: Infinity,
                     repeatDelay: 3,
                     ease: 'easeInOut',
-                    times: [0, 0.12, 0.35, 0.65, 0.88],
+                    times: [0, 0.10, 0.32, 0.68, 0.90],
                   }}
                 >
-                  <rect x="70" y="80" width="260" height="180" rx="4" fill="#fff" />
-                  <rect x="95" y="110" width="100" height="6" rx="3" fill="#e8e0d6" />
-                  <rect x="95" y="128" width="160" height="6" rx="3" fill="#e8e0d6" />
-                  <rect x="95" y="146" width="130" height="6" rx="3" fill="#e8e0d6" />
-                  <rect x="95" y="164" width="80" height="6" rx="3" fill="#e8e0d6" />
+                  <rect x="75" y="85" width="250" height="190" rx="6" fill="#fff" />
+                  <rect x="100" y="120" width="90" height="7" rx="3.5" fill="#f0e0d8" />
+                  <rect x="100" y="140" width="150" height="7" rx="3.5" fill="#f0e0d8" />
+                  <rect x="100" y="160" width="120" height="7" rx="3.5" fill="#f0e0d8" />
+                  <rect x="100" y="180" width="70" height="7" rx="3.5" fill="#f0e0d8" />
                 </motion.g>
 
-                {/* Envelope body — front, always on top */}
-                <rect x="40" y="120" width="320" height="170" rx="8" fill="#f0e8dc" />
+                {/* Envelope body — rectangle */}
+                <rect x="45" y="130" width="310" height="175" rx="8" fill="#e8889a" />
 
-                {/* Front V fold */}
+                {/* Inner shadow at top */}
+                <rect x="45" y="130" width="310" height="20" rx="0" fill="rgba(0,0,0,0.04)" />
+
+                {/* Front V fold — triangle overlay */}
                 <polygon
-                  points="40,120 200,240 360,120"
-                  fill="#e8dfcf"
-                  stroke="#ddd4c4"
-                  strokeWidth="0.5"
+                  points="45,130 200,260 355,130"
+                  fill="#f0a0ad"
                 />
 
-                {/* Bottom fold shading */}
+                {/* Bottom fold */}
                 <polygon
-                  points="40,290 200,240 360,290"
-                  fill="#e4dacb"
+                  points="45,305 200,260 355,305"
+                  fill="#e08898"
                 />
 
-                {/* Side fold lines */}
-                <line x1="40" y1="120" x2="40" y2="290" stroke="#d8cfc0" strokeWidth="0.5" />
-                <line x1="360" y1="120" x2="360" y2="290" stroke="#d8cfc0" strokeWidth="0.5" />
+                {/* Fold edge lines */}
+                <line x1="45" y1="130" x2="200" y2="260" stroke="rgba(0,0,0,0.06)" strokeWidth="0.8" />
+                <line x1="355" y1="130" x2="200" y2="260" stroke="rgba(0,0,0,0.06)" strokeWidth="0.8" />
 
-                {/* Wax seal */}
+                {/* Heart on front of envelope */}
                 <motion.g
-                  animate={{ scale: [1, 1.06, 1] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  style={{ transformOrigin: '200px 210px' }}
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{ transformOrigin: '200px 220px' }}
                 >
-                  <circle cx="200" cy="210" r="16" fill="url(#sealGradient)" />
-                  <text x="200" y="216" textAnchor="middle" fill="#f5e0d0" fontSize="14">&#9829;</text>
+                  <path
+                    d="M200,235 C200,235 180,210 185,200 C190,190 200,195 200,205 C200,195 210,190 215,200 C220,210 200,235 200,235Z"
+                    fill="#d94060"
+                  />
                 </motion.g>
 
                 <defs>
-                  <radialGradient id="sealGradient" cx="35%" cy="35%">
-                    <stop offset="0%" stopColor="#c45a5a" />
-                    <stop offset="100%" stopColor="#8b2e2e" />
-                  </radialGradient>
+                  <linearGradient id="flapShade" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor="rgba(0,0,0,0.06)" />
+                    <stop offset="100%" stopColor="rgba(0,0,0,0)" />
+                  </linearGradient>
                 </defs>
               </svg>
             </div>
