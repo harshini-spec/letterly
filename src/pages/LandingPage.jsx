@@ -44,8 +44,8 @@ export default function LandingPage() {
       </nav>
 
       {/* ─── Hero Section ─── */}
-      <section className="w-full h-[calc(100vh-64px)] flex items-center px-6 sm:px-10 md:px-12 lg:px-20">
-        <div className="w-full flex flex-col md:flex-row items-center gap-6 md:gap-6 lg:gap-8">
+      <section className="w-full h-[calc(100vh-64px)] flex items-center px-4 sm:px-6 md:px-10 lg:px-14">
+        <div className="w-full flex flex-col md:flex-row items-center gap-4 md:gap-4 lg:gap-6">
           {/* Left — Text */}
           <motion.div
             className="flex-1 min-w-0 max-w-xl text-center items-center flex flex-col"
@@ -96,7 +96,7 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
-            <div className="relative" style={{ width: '100%', maxWidth: 440 }}>
+            <div className="relative" style={{ width: '100%', maxWidth: 580 }}>
               {/* Floating hearts — burst upward when letter opens */}
               {hearts.map((h, i) => (
                 <motion.div
