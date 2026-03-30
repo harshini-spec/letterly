@@ -72,7 +72,7 @@ export default function LandingPage() {
             <div className="mt-10 md:mt-14">
               <motion.button
                 onClick={() => navigate('/create')}
-                className="px-12 sm:px-16 md:px-20 py-5 sm:py-6 md:py-7 rounded-full text-[17px] sm:text-[20px] md:text-[22px] cursor-pointer border-0 tracking-[0.02em]"
+                className="px-14 sm:px-18 md:px-22 py-6 sm:py-7 md:py-8 rounded-full text-[17px] sm:text-[20px] md:text-[22px] cursor-pointer border-0 tracking-[0.02em]"
                 style={{
                   background: '#a8434b',
                   color: '#f5eeea',
