@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { motion } from 'framer-motion'
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -114,181 +113,123 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
           >
-            <div
-              className="w-full max-w-[420px] sm:max-w-[480px] md:max-w-[540px] lg:max-w-[600px] rounded-2xl overflow-visible relative"
-              style={{
-                aspectRatio: '16 / 10',
-                background: 'linear-gradient(145deg, #5a7d6f, #4a6b60)',
-                boxShadow: '0 20px 60px rgba(0,0,0,0.12), 0 8px 24px rgba(0,0,0,0.08)',
-                border: '6px solid #fff',
-              }}
-            >
-              <div className="relative w-full h-full flex items-center justify-center">
-                {/* Floating hearts */}
-                {hearts.map((h, i) => (
-                  <motion.span
-                    key={i}
-                    className="absolute pointer-events-none select-none"
-                    style={{ fontSize: h.size, zIndex: 10 }}
-                    initial={{ opacity: 0, y: 0, x: 0 }}
-                    animate={{
-                      opacity: [0, 0.9, 0.9, 0],
-                      y: [0, h.y * 0.5, h.y],
-                      x: [0, h.x * 0.5, h.x],
-                      scale: [0.5, 1.1, 0.8],
-                    }}
-                    transition={{
-                      duration: h.duration,
-                      delay: h.delay,
-                      repeat: Infinity,
-                      repeatDelay: 2,
-                      ease: 'easeOut',
-                    }}
-                  >
-                    {h.emoji}
-                  </motion.span>
-                ))}
-
-                {/* Envelope assembly */}
-                <div
-                  className="relative w-56 h-40 sm:w-64 sm:h-44 md:w-76 md:h-52 lg:w-84 lg:h-60"
-                  style={{ marginTop: '8%' }}
+            <div className="relative" style={{ width: '100%', maxWidth: 420 }}>
+              {/* Floating hearts — positioned around the envelope */}
+              {hearts.map((h, i) => (
+                <motion.span
+                  key={i}
+                  className="absolute pointer-events-none select-none"
+                  style={{
+                    fontSize: h.size,
+                    zIndex: 20,
+                    left: '50%',
+                    top: '30%',
+                  }}
+                  initial={{ opacity: 0, y: 0, x: 0 }}
+                  animate={{
+                    opacity: [0, 0.85, 0.85, 0],
+                    y: [0, h.y * 0.6, h.y * 1.2],
+                    x: [0, h.x * 0.6, h.x],
+                    scale: [0.4, 1, 0.7],
+                  }}
+                  transition={{
+                    duration: h.duration,
+                    delay: h.delay,
+                    repeat: Infinity,
+                    repeatDelay: 2.5,
+                    ease: 'easeOut',
+                  }}
                 >
-                  {/* 1. Back flap — behind everything, hinges from bottom edge */}
-                  <motion.div
-                    className="absolute left-0 right-0"
-                    style={{
-                      bottom: '50%',
-                      height: '65%',
-                      clipPath: 'polygon(0 100%, 50% 0%, 100% 100%)',
-                      background: 'linear-gradient(180deg, #d8cebf, #e4dacb)',
-                      transformOrigin: 'bottom center',
-                      zIndex: 1,
-                    }}
-                    initial={{ rotateX: 0 }}
-                    animate={{ rotateX: [0, 0, -180, -180, 0] }}
-                    transition={{
-                      duration: 4.5,
-                      delay: 1.2,
-                      repeat: Infinity,
-                      repeatDelay: 3,
-                      ease: 'easeInOut',
-                      times: [0, 0.08, 0.28, 0.72, 0.92],
-                    }}
-                  />
+                  {h.emoji}
+                </motion.span>
+              ))}
 
-                  {/* 2. Letter — slides up from inside */}
-                  <motion.div
-                    className="absolute rounded-sm overflow-hidden"
-                    style={{
-                      left: '8%',
-                      right: '8%',
-                      height: '75%',
-                      background: '#fff',
-                      boxShadow: '0 -6px 20px rgba(0,0,0,0.1)',
-                      zIndex: 2,
-                    }}
-                    initial={{ bottom: '10%' }}
-                    animate={{ bottom: ['10%', '10%', '75%', '75%', '10%'] }}
-                    transition={{
-                      duration: 4.5,
-                      delay: 1.2,
-                      repeat: Infinity,
-                      repeatDelay: 3,
-                      ease: 'easeInOut',
-                      times: [0, 0.12, 0.38, 0.62, 0.88],
-                    }}
-                  >
-                    <div className="p-3 sm:p-4 md:p-5 space-y-2 sm:space-y-2.5">
-                      <div className="w-12 sm:w-16 md:w-20 h-1 sm:h-1.5 rounded-full" style={{ background: '#e8e0d6' }} />
-                      <div className="w-20 sm:w-24 md:w-32 h-1 sm:h-1.5 rounded-full" style={{ background: '#e8e0d6' }} />
-                      <div className="w-16 sm:w-20 md:w-28 h-1 sm:h-1.5 rounded-full" style={{ background: '#e8e0d6' }} />
-                      <div className="w-10 sm:w-14 md:w-16 h-1 sm:h-1.5 rounded-full" style={{ background: '#e8e0d6' }} />
-                    </div>
-                  </motion.div>
-
-                  {/* 3. Envelope body — in front of letter and flap */}
-                  <div
-                    className="absolute inset-0 rounded-lg"
-                    style={{
-                      background: 'linear-gradient(150deg, #f5f0ea, #e8dfcf)',
-                      boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
-                      zIndex: 3,
-                      clipPath: 'polygon(0 40%, 50% 0%, 100% 40%, 100% 100%, 0 100%)',
-                    }}
-                  />
-
-                  {/* 4. Front V fold — the topmost layer */}
-                  <div
-                    className="absolute inset-0 rounded-b-lg"
-                    style={{
-                      background: 'linear-gradient(to bottom, #ede5d8, #e4dacb)',
-                      clipPath: 'polygon(0 40%, 50% 75%, 100% 40%, 100% 100%, 0 100%)',
-                      zIndex: 4,
-                    }}
-                  />
-
-                  {/* Side fold lines */}
-                  <div
-                    className="absolute inset-0"
-                    style={{
-                      zIndex: 5,
-                      pointerEvents: 'none',
-                    }}
-                  >
-                    <div className="absolute left-0 top-[40%] bottom-0 w-px" style={{ background: 'rgba(0,0,0,0.04)' }} />
-                    <div className="absolute right-0 top-[40%] bottom-0 w-px" style={{ background: 'rgba(0,0,0,0.04)' }} />
-                  </div>
-
-                  {/* Wax seal on front */}
-                  <motion.div
-                    className="absolute left-1/2 -translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center"
-                    style={{
-                      top: '55%',
-                      background: 'radial-gradient(circle at 35% 35%, #c45a5a, #8b2e2e)',
-                      boxShadow: '0 3px 10px rgba(139,46,46,0.4)',
-                      zIndex: 6,
-                    }}
-                    animate={{ scale: [1, 1.08, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  >
-                    <span className="text-[10px] sm:text-[12px]" style={{ color: '#f5e0d0' }}>&#9829;</span>
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* Coffee cup */}
-              <div className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8">
-                <motion.div
-                  className="relative"
-                  animate={{ y: [0, -3, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+              {/* SVG Envelope with animation */}
+              <svg
+                viewBox="0 0 400 300"
+                className="w-full h-auto"
+                style={{ overflow: 'visible' }}
+              >
+                {/* Back flap — triangle behind envelope, flips open */}
+                <motion.g
+                  style={{ transformOrigin: '200px 120px' }}
+                  initial={{ rotateX: 0 }}
+                  animate={{ rotateX: [0, 0, 180, 180, 0] }}
+                  transition={{
+                    duration: 5,
+                    delay: 1.5,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                    ease: 'easeInOut',
+                    times: [0, 0.08, 0.25, 0.75, 0.92],
+                  }}
                 >
-                  <div
-                    className="w-14 h-10 sm:w-16 sm:h-12 md:w-18 md:h-14 rounded-b-xl rounded-t-sm"
-                    style={{ background: '#fff', boxShadow: '0 4px 16px rgba(0,0,0,0.15)' }}
-                  >
-                    <div
-                      className="absolute top-1 left-1/2 -translate-x-1/2 w-8 sm:w-10 md:w-12 h-5 sm:h-6 md:h-7 rounded-b-lg"
-                      style={{ background: '#3a2218' }}
-                    />
-                  </div>
-                  {/* Steam */}
-                  <motion.div
-                    className="absolute -top-4 left-1/2 -translate-x-1/2 flex gap-1"
-                    animate={{ opacity: [0.3, 0.7, 0.3], y: [0, -4, 0] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-                  >
-                    <div className="w-0.5 h-3 rounded-full" style={{ background: 'rgba(255,255,255,0.5)' }} />
-                    <div className="w-0.5 h-4 rounded-full mt-1" style={{ background: 'rgba(255,255,255,0.4)' }} />
-                    <div className="w-0.5 h-3 rounded-full" style={{ background: 'rgba(255,255,255,0.5)' }} />
-                  </motion.div>
-                  <div
-                    className="w-16 sm:w-18 md:w-22 h-1.5 rounded-full mx-auto"
-                    style={{ background: '#f0ebe5', boxShadow: '0 2px 6px rgba(0,0,0,0.06)' }}
+                  <polygon
+                    points="40,120 200,10 360,120"
+                    fill="#d8cfc0"
+                    stroke="#c8bfb0"
+                    strokeWidth="0.5"
                   />
-                </motion.div>
-              </div>
+                </motion.g>
+
+                {/* Letter paper — slides up */}
+                <motion.g
+                  initial={{ y: 0 }}
+                  animate={{ y: [0, 0, -100, -100, 0] }}
+                  transition={{
+                    duration: 5,
+                    delay: 1.5,
+                    repeat: Infinity,
+                    repeatDelay: 3,
+                    ease: 'easeInOut',
+                    times: [0, 0.12, 0.35, 0.65, 0.88],
+                  }}
+                >
+                  <rect x="70" y="80" width="260" height="180" rx="4" fill="#fff" />
+                  <rect x="95" y="110" width="100" height="6" rx="3" fill="#e8e0d6" />
+                  <rect x="95" y="128" width="160" height="6" rx="3" fill="#e8e0d6" />
+                  <rect x="95" y="146" width="130" height="6" rx="3" fill="#e8e0d6" />
+                  <rect x="95" y="164" width="80" height="6" rx="3" fill="#e8e0d6" />
+                </motion.g>
+
+                {/* Envelope body — front, always on top */}
+                <rect x="40" y="120" width="320" height="170" rx="8" fill="#f0e8dc" />
+
+                {/* Front V fold */}
+                <polygon
+                  points="40,120 200,240 360,120"
+                  fill="#e8dfcf"
+                  stroke="#ddd4c4"
+                  strokeWidth="0.5"
+                />
+
+                {/* Bottom fold shading */}
+                <polygon
+                  points="40,290 200,240 360,290"
+                  fill="#e4dacb"
+                />
+
+                {/* Side fold lines */}
+                <line x1="40" y1="120" x2="40" y2="290" stroke="#d8cfc0" strokeWidth="0.5" />
+                <line x1="360" y1="120" x2="360" y2="290" stroke="#d8cfc0" strokeWidth="0.5" />
+
+                {/* Wax seal */}
+                <motion.g
+                  animate={{ scale: [1, 1.06, 1] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  style={{ transformOrigin: '200px 210px' }}
+                >
+                  <circle cx="200" cy="210" r="16" fill="url(#sealGradient)" />
+                  <text x="200" y="216" textAnchor="middle" fill="#f5e0d0" fontSize="14">&#9829;</text>
+                </motion.g>
+
+                <defs>
+                  <radialGradient id="sealGradient" cx="35%" cy="35%">
+                    <stop offset="0%" stopColor="#c45a5a" />
+                    <stop offset="100%" stopColor="#8b2e2e" />
+                  </radialGradient>
+                </defs>
+              </svg>
             </div>
           </motion.div>
         </div>
