@@ -40,15 +40,7 @@ export default function LandingPage() {
           Letterly
         </span>
 
-        <motion.button
-          onClick={() => navigate('/create')}
-          className="px-5 md:px-7 py-2.5 md:py-3 rounded-full text-[12px] md:text-[13px] font-semibold cursor-pointer border-0 uppercase tracking-[0.04em]"
-          style={{ background: '#a8434b', color: '#fff' }}
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.97 }}
-        >
-          Get Started
-        </motion.button>
+        <div />
       </nav>
 
       {/* ─── Hero Section ─── */}
@@ -77,10 +69,10 @@ export default function LandingPage() {
               as pen and paper.
             </p>
 
-            <div className="flex items-center justify-center gap-8 md:gap-10 mt-10 md:mt-14 flex-wrap">
+            <div className="mt-10 md:mt-14">
               <motion.button
                 onClick={() => navigate('/create')}
-                className="px-10 sm:px-14 md:px-16 py-5 md:py-6 rounded-full text-[15px] sm:text-[17px] md:text-[19px] cursor-pointer border-0 tracking-[0.02em]"
+                className="px-12 sm:px-16 md:px-20 py-5 sm:py-6 md:py-7 rounded-full text-[17px] sm:text-[20px] md:text-[22px] cursor-pointer border-0 tracking-[0.02em]"
                 style={{
                   background: '#a8434b',
                   color: '#f5eeea',
@@ -93,17 +85,6 @@ export default function LandingPage() {
                 whileTap={{ scale: 0.97 }}
               >
                 Send your first letter
-              </motion.button>
-
-              <motion.button
-                className="text-[14px] md:text-[16px] cursor-pointer bg-transparent border-0 flex items-center gap-3 tracking-[0.02em]"
-                style={{ color: '#5a504a', fontFamily: "'Cormorant Garamond', serif", fontWeight: 500 }}
-                whileHover={{ x: 4 }}
-              >
-                <span style={{ textDecoration: 'underline', textUnderlineOffset: '5px' }}>
-                  View the gallery
-                </span>
-                <span className="text-lg">&rarr;</span>
               </motion.button>
             </div>
           </motion.div>
