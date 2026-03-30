@@ -171,7 +171,7 @@ export default function LandingPage() {
                       initial={{ rotateX: 0, zIndex: 4 }}
                       animate={{
                         rotateX: [0, 0, 180, 180, 0],
-                        zIndex: [4, 4, 1, 1, 4],
+                        zIndex: [4, 1, 1, 1, 4],
                       }}
                       transition={{
                         duration: 5,
@@ -179,7 +179,7 @@ export default function LandingPage() {
                         repeat: Infinity,
                         repeatDelay: 3,
                         ease: 'easeInOut',
-                        times: [0, 0.1, 0.3, 0.7, 0.9],
+                        times: [0, 0.05, 0.3, 0.85, 0.95],
                       }}
                     />
 
@@ -191,10 +191,10 @@ export default function LandingPage() {
                         boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
                         height: '55%',
                       }}
-                      initial={{ top: '10%', zIndex: 2 }}
+                      initial={{ top: '10%', zIndex: 5 }}
                       animate={{
                         top: ['10%', '10%', '-30%', '-30%', '10%'],
-                        zIndex: [2, 2, 5, 5, 2],
+                        zIndex: [5, 5, 5, 5, 5],
                       }}
                       transition={{
                         duration: 5,
