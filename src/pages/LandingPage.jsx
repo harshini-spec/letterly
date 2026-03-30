@@ -149,90 +149,111 @@ export default function LandingPage() {
                   </motion.span>
                 ))}
 
-                {/* Envelope body */}
-                <div className="relative" style={{ marginTop: '6%' }}>
-                  <div
-                    className="w-52 h-36 sm:w-60 sm:h-40 md:w-72 md:h-48 lg:w-80 lg:h-56 rounded-lg relative"
+                {/* Envelope assembly */}
+                <div
+                  className="relative w-56 h-40 sm:w-64 sm:h-44 md:w-76 md:h-52 lg:w-84 lg:h-60"
+                  style={{ marginTop: '8%' }}
+                >
+                  {/* 1. Back flap — behind everything, hinges from bottom edge */}
+                  <motion.div
+                    className="absolute left-0 right-0"
                     style={{
-                      background: 'linear-gradient(150deg, #f5f0ea, #e8dfcf)',
-                      boxShadow: '0 12px 40px rgba(0,0,0,0.2)',
+                      bottom: '50%',
+                      height: '65%',
+                      clipPath: 'polygon(0 100%, 50% 0%, 100% 100%)',
+                      background: 'linear-gradient(180deg, #d8cebf, #e4dacb)',
+                      transformOrigin: 'bottom center',
+                      zIndex: 1,
+                    }}
+                    initial={{ rotateX: 0 }}
+                    animate={{ rotateX: [0, 0, -180, -180, 0] }}
+                    transition={{
+                      duration: 4.5,
+                      delay: 1.2,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: 'easeInOut',
+                      times: [0, 0.08, 0.28, 0.72, 0.92],
+                    }}
+                  />
+
+                  {/* 2. Letter — slides up from inside */}
+                  <motion.div
+                    className="absolute rounded-sm overflow-hidden"
+                    style={{
+                      left: '8%',
+                      right: '8%',
+                      height: '75%',
+                      background: '#fff',
+                      boxShadow: '0 -6px 20px rgba(0,0,0,0.1)',
+                      zIndex: 2,
+                    }}
+                    initial={{ bottom: '10%' }}
+                    animate={{ bottom: ['10%', '10%', '75%', '75%', '10%'] }}
+                    transition={{
+                      duration: 4.5,
+                      delay: 1.2,
+                      repeat: Infinity,
+                      repeatDelay: 3,
+                      ease: 'easeInOut',
+                      times: [0, 0.12, 0.38, 0.62, 0.88],
                     }}
                   >
-                    {/* Envelope flap — opens after delay */}
-                    <motion.div
-                      className="absolute left-0 right-0"
-                      style={{
-                        top: 0,
-                        height: '55%',
-                        clipPath: 'polygon(0 0, 50% 100%, 100% 0)',
-                        background: 'linear-gradient(180deg, #e4dacb, #ddd2c2)',
-                        transformOrigin: 'top center',
-                        zIndex: 6,
-                      }}
-                      initial={{ rotateX: 0 }}
-                      animate={{ rotateX: [0, 180, 180, 0] }}
-                      transition={{
-                        duration: 4,
-                        delay: 1.2,
-                        repeat: Infinity,
-                        repeatDelay: 4,
-                        ease: 'easeInOut',
-                        times: [0, 0.25, 0.75, 1],
-                      }}
-                    />
+                    <div className="p-3 sm:p-4 md:p-5 space-y-2 sm:space-y-2.5">
+                      <div className="w-12 sm:w-16 md:w-20 h-1 sm:h-1.5 rounded-full" style={{ background: '#e8e0d6' }} />
+                      <div className="w-20 sm:w-24 md:w-32 h-1 sm:h-1.5 rounded-full" style={{ background: '#e8e0d6' }} />
+                      <div className="w-16 sm:w-20 md:w-28 h-1 sm:h-1.5 rounded-full" style={{ background: '#e8e0d6' }} />
+                      <div className="w-10 sm:w-14 md:w-16 h-1 sm:h-1.5 rounded-full" style={{ background: '#e8e0d6' }} />
+                    </div>
+                  </motion.div>
 
-                    {/* Letter peeking out — always above flap */}
-                    <motion.div
-                      className="absolute left-3 right-3 sm:left-4 sm:right-4 rounded-t-sm overflow-hidden"
-                      style={{
-                        background: '#fff',
-                        boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
-                        height: '55%',
-                        zIndex: 7,
-                      }}
-                      initial={{ top: '15%' }}
-                      animate={{ top: ['15%', '15%', '-28%', '-28%', '15%'] }}
-                      transition={{
-                        duration: 4,
-                        delay: 1.2,
-                        repeat: Infinity,
-                        repeatDelay: 4,
-                        ease: 'easeInOut',
-                        times: [0, 0.15, 0.4, 0.6, 0.85],
-                      }}
-                    >
-                      <div className="p-3 sm:p-4 space-y-2">
-                        <div className="w-14 sm:w-20 h-1 sm:h-1.5 rounded-full" style={{ background: '#e0d8cf' }} />
-                        <div className="w-20 sm:w-28 h-1 sm:h-1.5 rounded-full" style={{ background: '#e0d8cf' }} />
-                        <div className="w-16 sm:w-24 h-1 sm:h-1.5 rounded-full" style={{ background: '#e0d8cf' }} />
-                      </div>
-                    </motion.div>
+                  {/* 3. Envelope body — in front of letter and flap */}
+                  <div
+                    className="absolute inset-0 rounded-lg"
+                    style={{
+                      background: 'linear-gradient(150deg, #f5f0ea, #e8dfcf)',
+                      boxShadow: '0 12px 40px rgba(0,0,0,0.18)',
+                      zIndex: 3,
+                      clipPath: 'polygon(0 40%, 50% 0%, 100% 40%, 100% 100%, 0 100%)',
+                    }}
+                  />
 
-                    {/* Bottom V fold */}
-                    <div
-                      className="absolute bottom-0 left-0 right-0 h-[50%]"
-                      style={{
-                        clipPath: 'polygon(0 0, 50% 80%, 100% 0, 100% 100%, 0 100%)',
-                        background: 'linear-gradient(to bottom, transparent, #ede5d8)',
-                        borderRadius: '0 0 8px 8px',
-                        zIndex: 8,
-                      }}
-                    />
+                  {/* 4. Front V fold — the topmost layer */}
+                  <div
+                    className="absolute inset-0 rounded-b-lg"
+                    style={{
+                      background: 'linear-gradient(to bottom, #ede5d8, #e4dacb)',
+                      clipPath: 'polygon(0 40%, 50% 75%, 100% 40%, 100% 100%, 0 100%)',
+                      zIndex: 4,
+                    }}
+                  />
 
-                    {/* Wax seal */}
-                    <motion.div
-                      className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center"
-                      style={{
-                        background: 'radial-gradient(circle at 35% 35%, #c45a5a, #8b2e2e)',
-                        boxShadow: '0 3px 10px rgba(139,46,46,0.4)',
-                        zIndex: 4,
-                      }}
-                      animate={{ scale: [1, 1.08, 1] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                    >
-                      <span className="text-[10px] sm:text-[12px]" style={{ color: '#f5e0d0' }}>♥</span>
-                    </motion.div>
+                  {/* Side fold lines */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      zIndex: 5,
+                      pointerEvents: 'none',
+                    }}
+                  >
+                    <div className="absolute left-0 top-[40%] bottom-0 w-px" style={{ background: 'rgba(0,0,0,0.04)' }} />
+                    <div className="absolute right-0 top-[40%] bottom-0 w-px" style={{ background: 'rgba(0,0,0,0.04)' }} />
                   </div>
+
+                  {/* Wax seal on front */}
+                  <motion.div
+                    className="absolute left-1/2 -translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center"
+                    style={{
+                      top: '55%',
+                      background: 'radial-gradient(circle at 35% 35%, #c45a5a, #8b2e2e)',
+                      boxShadow: '0 3px 10px rgba(139,46,46,0.4)',
+                      zIndex: 6,
+                    }}
+                    animate={{ scale: [1, 1.08, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <span className="text-[10px] sm:text-[12px]" style={{ color: '#f5e0d0' }}>&#9829;</span>
+                  </motion.div>
                 </div>
               </div>
 
