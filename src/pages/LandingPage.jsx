@@ -168,10 +168,10 @@ export default function LandingPage() {
                         background: 'linear-gradient(180deg, #e4dacb, #ddd2c2)',
                         transformOrigin: 'top center',
                       }}
-                      initial={{ rotateX: 0, zIndex: 4 }}
+                      initial={{ rotateX: 0, zIndex: 6 }}
                       animate={{
-                        rotateX: [0, 0, 180, 180, 0],
-                        zIndex: [4, 1, 1, 1, 4],
+                        rotateX: [0, 0, 180, 180, 180, 0, 0],
+                        zIndex:  [6, 6, 1,   1,   1,   6, 6],
                       }}
                       transition={{
                         duration: 5,
@@ -179,7 +179,7 @@ export default function LandingPage() {
                         repeat: Infinity,
                         repeatDelay: 3,
                         ease: 'easeInOut',
-                        times: [0, 0.05, 0.3, 0.85, 0.95],
+                        times: [0, 0.05, 0.2, 0.5, 0.8, 0.92, 1],
                       }}
                     />
 
@@ -191,10 +191,10 @@ export default function LandingPage() {
                         boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
                         height: '55%',
                       }}
-                      initial={{ top: '10%', zIndex: 5 }}
+                      initial={{ top: '10%', zIndex: 2 }}
                       animate={{
-                        top: ['10%', '10%', '-30%', '-30%', '10%'],
-                        zIndex: [5, 5, 5, 5, 5],
+                        top:    ['10%', '10%', '-30%', '-30%', '10%', '10%'],
+                        zIndex: [2,     5,     5,      5,      5,     2],
                       }}
                       transition={{
                         duration: 5,
@@ -202,7 +202,7 @@ export default function LandingPage() {
                         repeat: Infinity,
                         repeatDelay: 3,
                         ease: 'easeInOut',
-                        times: [0, 0.1, 0.35, 0.65, 0.9],
+                        times: [0, 0.08, 0.35, 0.65, 0.85, 0.9],
                       }}
                     >
                       <div className="p-3 sm:p-4 space-y-2">
