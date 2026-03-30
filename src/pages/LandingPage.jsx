@@ -54,14 +54,14 @@ export default function LandingPage() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
           >
             <h1
-              className="text-[2.4rem] sm:text-[3rem] md:text-[3.4rem] lg:text-[4rem] leading-[1.08] font-medium"
+              className="text-[2.8rem] sm:text-[3.4rem] md:text-[3.8rem] lg:text-[4.5rem] leading-[1.06] font-medium"
               style={{ fontFamily: "'Cormorant Garamond', serif", color: '#2a2220', fontStyle: 'italic' }}
             >
               Write something they&rsquo;ll never forget
             </h1>
 
             <p
-              className="mt-8 md:mt-10 text-[14px] md:text-[16px] leading-[1.8] max-w-[420px] mx-auto"
+              className="mt-6 md:mt-8 text-[15px] md:text-[17px] leading-[1.8] max-w-[440px] mx-auto"
               style={{ color: '#7a6e66' }}
             >
               Rediscover the art of thoughtful communication with
@@ -300,60 +300,9 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ─── Divider ─── */}
-      <div className="w-full px-5 sm:px-8 md:px-12 lg:px-20">
-        <div style={{ height: 1, background: '#e8ddd5' }} />
-      </div>
-
-      {/* ─── Final CTA Section ─── */}
-      <section className="w-full min-h-screen flex flex-col items-center justify-center px-5 sm:px-8 md:px-12 lg:px-20 py-20 md:py-28">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div {...fadeUp}>
-            <span
-              className="inline-block px-4 md:px-5 py-2 rounded-full text-[10px] md:text-[11px] font-semibold tracking-[0.15em] uppercase"
-              style={{ background: '#f3e8e4', color: '#a8434b' }}
-            >
-              Join the correspondence
-            </span>
-          </motion.div>
-
-          <motion.h2
-            className="text-[2rem] sm:text-[2.4rem] md:text-[3rem] lg:text-[3.8rem] font-medium leading-[1.1] mt-6 md:mt-8 mb-10 md:mb-12"
-            style={{ fontFamily: "'Cormorant Garamond', serif", color: '#2a2220', fontStyle: 'italic' }}
-            {...fadeUp}
-          >
-            Your words deserve a beautiful home.
-          </motion.h2>
-
-          <motion.div {...fadeUp}>
-            <motion.button
-              onClick={() => navigate('/create')}
-              className="px-10 md:px-12 py-4 md:py-5 rounded-full text-[12px] md:text-[13px] font-semibold cursor-pointer border-0 uppercase tracking-[0.1em]"
-              style={{
-                background: '#a8434b',
-                color: '#fff',
-                boxShadow: '0 6px 24px rgba(168,67,75,0.3)',
-              }}
-              whileHover={{ scale: 1.04, boxShadow: '0 8px 32px rgba(168,67,75,0.4)' }}
-              whileTap={{ scale: 0.97 }}
-            >
-              Send into the world
-            </motion.button>
-          </motion.div>
-
-          <motion.p
-            className="mt-8 md:mt-10 text-[12px] md:text-[13px]"
-            style={{ color: '#b5a99f', fontStyle: 'italic', fontFamily: "'Cormorant Garamond', serif" }}
-            {...fadeUp}
-          >
-            Start your journey with a single thought. No credit card required.
-          </motion.p>
-        </div>
-      </section>
-
       {/* ─── Footer ─── */}
       <footer
-        className="w-full px-5 sm:px-8 md:px-12 lg:px-20 py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-4"
+        className="w-full px-5 sm:px-8 md:px-12 lg:px-20 py-6 md:py-8 flex items-center justify-center"
         style={{ borderTop: '1px solid #e8ddd5' }}
       >
         <span
@@ -362,19 +311,6 @@ export default function LandingPage() {
         >
           Letterly
         </span>
-
-        <div className="flex items-center gap-6 md:gap-8">
-          {['Privacy', 'Terms', 'Contact'].map((link) => (
-            <a
-              key={link}
-              href="#"
-              className="text-[11px] md:text-[12px] no-underline"
-              style={{ color: '#8a7d76' }}
-            >
-              {link}
-            </a>
-          ))}
-        </div>
       </footer>
     </div>
   )
