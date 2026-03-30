@@ -167,42 +167,38 @@ export default function LandingPage() {
                         clipPath: 'polygon(0 0, 50% 100%, 100% 0)',
                         background: 'linear-gradient(180deg, #e4dacb, #ddd2c2)',
                         transformOrigin: 'top center',
+                        zIndex: 6,
                       }}
-                      initial={{ rotateX: 0, zIndex: 6 }}
-                      animate={{
-                        rotateX: [0, 0, 180, 180, 180, 0, 0],
-                        zIndex:  [6, 6, 1,   1,   1,   6, 6],
-                      }}
+                      initial={{ rotateX: 0 }}
+                      animate={{ rotateX: [0, 180, 180, 0] }}
                       transition={{
-                        duration: 5,
+                        duration: 4,
                         delay: 1.2,
                         repeat: Infinity,
-                        repeatDelay: 3,
+                        repeatDelay: 4,
                         ease: 'easeInOut',
-                        times: [0, 0.05, 0.2, 0.5, 0.8, 0.92, 1],
+                        times: [0, 0.25, 0.75, 1],
                       }}
                     />
 
-                    {/* Letter peeking out */}
+                    {/* Letter peeking out — always above flap */}
                     <motion.div
                       className="absolute left-3 right-3 sm:left-4 sm:right-4 rounded-t-sm overflow-hidden"
                       style={{
                         background: '#fff',
                         boxShadow: '0 -4px 16px rgba(0,0,0,0.08)',
                         height: '55%',
+                        zIndex: 7,
                       }}
-                      initial={{ top: '10%', zIndex: 2 }}
-                      animate={{
-                        top:    ['10%', '10%', '-30%', '-30%', '10%', '10%'],
-                        zIndex: [2,     5,     5,      5,      5,     2],
-                      }}
+                      initial={{ top: '15%' }}
+                      animate={{ top: ['15%', '15%', '-28%', '-28%', '15%'] }}
                       transition={{
-                        duration: 5,
+                        duration: 4,
                         delay: 1.2,
                         repeat: Infinity,
-                        repeatDelay: 3,
+                        repeatDelay: 4,
                         ease: 'easeInOut',
-                        times: [0, 0.08, 0.35, 0.65, 0.85, 0.9],
+                        times: [0, 0.15, 0.4, 0.6, 0.85],
                       }}
                     >
                       <div className="p-3 sm:p-4 space-y-2">
@@ -219,7 +215,7 @@ export default function LandingPage() {
                         clipPath: 'polygon(0 0, 50% 80%, 100% 0, 100% 100%, 0 100%)',
                         background: 'linear-gradient(to bottom, transparent, #ede5d8)',
                         borderRadius: '0 0 8px 8px',
-                        zIndex: 3,
+                        zIndex: 8,
                       }}
                     />
 
